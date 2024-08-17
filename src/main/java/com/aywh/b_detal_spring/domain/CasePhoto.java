@@ -31,5 +31,7 @@ public class CasePhoto {
     @JoinColumn(name = "patient_id")
     private Patient patient;
 
+    private String imgURL;
+
     private Date date;
 }
