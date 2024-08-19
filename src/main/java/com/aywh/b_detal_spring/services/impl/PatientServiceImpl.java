@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.lang.RuntimeException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.aywh.b_detal_spring.domain.Patient;
@@ -27,6 +29,11 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public List<Patient> findAll() {
         return (List<Patient>) patientRepo.findAll();
+    }
+
+    @Override
+    public Page<Patient> findAll(Pageable pageable) {
+        return patientRepo.findAll(pageable);
     }
 
     @Override
@@ -55,5 +62,6 @@ public class PatientServiceImpl implements PatientService {
     public void delete(Long id) {
         patientRepo.deleteById(id);
     }
+
 
 }

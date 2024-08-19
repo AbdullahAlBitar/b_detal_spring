@@ -8,6 +8,8 @@ import com.aywh.b_detal_spring.mappers.Mapper;
 import com.aywh.b_detal_spring.services.PatientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
@@ -43,9 +43,9 @@ public class PatientController {
     }
 
     @GetMapping("/patients")
-    public List<PatientDto> listPatient() {
-        List<Patient> patients = patientService.findAll();
-        return patients.stream().map(patientMapper::mapTo).collect(Collectors.toList());
+    public Page<PatientDto> listPatient(Pageable pageable) {
+        Page<Patient> patients = patientService.findAll(pageable);
+        return patients.map(patientMapper::mapTo);
     }
     
     @GetMapping("/patients/{id}")
