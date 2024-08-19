@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
 
-import com.aywh.b_detal_spring.domain.Doctor;
 
 @Data
 @AllArgsConstructor
@@ -18,7 +17,7 @@ public class VisitDto {
 
     private PatientDto patient;
 
-    private Doctor doctor;
+    private DoctorDto doctor;
 
     private Date date;
 }

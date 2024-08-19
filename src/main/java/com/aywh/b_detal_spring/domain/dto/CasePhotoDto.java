@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
 
-import com.aywh.b_detal_spring.domain.Patient;
 
 
 @Data
@@ -16,7 +15,7 @@ public class CasePhotoDto {
     
     private Long id;
     
-    private Patient patient;
+    private PatientDto patient;
 
     private String imgURL;
 
